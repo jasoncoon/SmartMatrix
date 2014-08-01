@@ -41,7 +41,8 @@ typedef enum ScrollMode {
     bounceForward,
     bounceReverse,
     stopped,
-    off
+    off,
+    wrapForwardFromLeft,
 } ScrollMode;
 
 
