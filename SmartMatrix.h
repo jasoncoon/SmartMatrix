@@ -33,6 +33,8 @@
 
 #include "../FastLED/FastLED.h"
 
+#define rgb24 CRGB
+
 // scroll text
 const int textLayerMaxStringLength = 50;
 
@@ -63,31 +65,31 @@ typedef enum fontChoices {
 
 typedef uint8_t   fract8;
 
-// color
-typedef struct rgb24 {
-    uint8_t red;
-    uint8_t green;
-    uint8_t blue;
-
-    // add one RGB to another, saturating at 0xFF for each channel
-    inline rgb24& operator+= (const rgb24& rhs)
-    {
-        red = qadd8(red, rhs.red);
-        green = qadd8(green, rhs.green);
-        blue = qadd8(blue, rhs.blue);
-        return *this;
-    }
-
-    // scale down a RGB to N 256ths of it's current brightness, using
-    // 'plain math' dimming rules, which means that if the low light levels
-    // may dim all the way to 100% black.
-    inline rgb24& nscale8(uint8_t scaledown)
-    {
-        nscale8x3(red, green, blue, scaledown);
-        return *this;
-    }
-
-} rgb24;
+//// color
+//typedef struct rgb24 {
+//    uint8_t red;
+//    uint8_t green;
+//    uint8_t blue;
+//
+//    // add one RGB to another, saturating at 0xFF for each channel
+//    inline rgb24& operator+= (const rgb24& rhs)
+//    {
+//        red = qadd8(red, rhs.red);
+//        green = qadd8(green, rhs.green);
+//        blue = qadd8(blue, rhs.blue);
+//        return *this;
+//    }
+//
+//    // scale down a RGB to N 256ths of it's current brightness, using
+//    // 'plain math' dimming rules, which means that if the low light levels
+//    // may dim all the way to 100% black.
+//    inline rgb24& nscale8(uint8_t scaledown)
+//    {
+//        nscale8x3(red, green, blue, scaledown);
+//        return *this;
+//    }
+//
+//} rgb24;
 
 typedef enum colorCorrectionModes {
     ccNone,
